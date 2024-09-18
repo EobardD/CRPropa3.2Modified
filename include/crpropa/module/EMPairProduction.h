@@ -37,6 +37,7 @@ private:
 	// tabulated interaction rate 1/lambda(E)
 	std::vector<double> tabEnergy;  //!< electron energy in [J]
 	std::vector<double> tabRate;  //!< interaction rate in [1/m]
+	std::vector<double> tabZ;      // Redshift values, this is newly added for 2D interpolation
 	
 	// tabulated CDF(s_kin, E) = cumulative differential interaction rate
 	std::vector<double> tabE;  //!< electron energy in [J]
@@ -74,7 +75,7 @@ public:
 	void setInteractionTag(std::string tag);
 	std::string getInteractionTag() const;
 
-	void initRate(std::string filename);
+	void initData(std::string filename);
 	void initCumulativeRate(std::string filename);
 
 	void performInteraction(Candidate *candidate) const;

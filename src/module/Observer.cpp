@@ -134,20 +134,26 @@ std::string ObserverTracking::getDescription() const {
 }
 
 // Observer1D --------------------------------------------------------------
+// Implementing the constructor
+Observer1D::Observer1D(double position) : detectionPosition(position) {}
+
+// Implementing the checkDetection method
 DetectionState Observer1D::checkDetection(Candidate *candidate) const {
-	double x = candidate->current.getPosition().x;
-	if (x > 0) {
-		// Limits the next step size to prevent candidates from overshooting in case of non-detection
-		candidate->limitNextStep(x);
-		return NOTHING;
-	}
-	// Detects particles when reaching x = 0
-	return DETECTED;
+    double x = candidate->current.getPosition().x;
+    if (x > detectionPosition) {
+        // Limits the next step size to prevent candidates from overshooting in case of non-detection
+        candidate->limitNextStep(x - detectionPosition);
+        return NOTHING;
+    }
+    // Detects particles when reaching the specified position
+    return DETECTED;
 }
 
+// Implementing the getDescription method
 std::string Observer1D::getDescription() const {
-	return "Observer1D: observer at x = 0";
+    return "Observer1D: observer at x = " + std::to_string(detectionPosition);
 }
+
 
 // ObserverRedshiftWindow -----------------------------------------------------
 ObserverRedshiftWindow::ObserverRedshiftWindow(double zmin, double zmax) :

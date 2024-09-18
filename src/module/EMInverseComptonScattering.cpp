@@ -22,7 +22,8 @@ void EMInverseComptonScattering::setPhotonField(ref_ptr<PhotonField> photonField
 	this->photonField = photonField;
 	std::string fname = photonField->getFieldName();
 	setDescription("EMInverseComptonScattering: " + fname);
-	initRate(getDataPath("EMInverseComptonScattering/rate_" + fname + ".txt"));
+	initData("/Users/eobardthawne/CRPropa3Modified/build/data/EMInverseComptonScattering/"+fname);
+	// initRate(getDataPath("EMInverseComptonScattering/rate_" + fname + ".txt"));
 	initCumulativeRate(getDataPath("EMInverseComptonScattering/cdf_" + fname + ".txt"));
 }
 
@@ -38,29 +39,47 @@ void EMInverseComptonScattering::setThinning(double thinning) {
 	this->thinning = thinning;
 }
 
-void EMInverseComptonScattering::initRate(std::string filename) {
-	std::ifstream infile(filename.c_str());
+void EMInverseComptonScattering::initData(std::string basePath) {
+    // Define filenames based on the base path and file name conventions
+    std::string energyFile = basePath + "energies.txt";
+    std::string zFile = basePath + "redshifts.txt";
+    std::string rateFile = basePath + "rates.txt";
 
-	if (!infile.good())
-		throw std::runtime_error("EMInverseComptonScattering: could not open file " + filename);
+    // clear previously loaded tables
+    tabICEnergy.clear();
+    tabICRate.clear();
+    tabICZ.clear();
 
-	// clear previously loaded tables
-	tabEnergy.clear();
-	tabRate.clear();
+    // Read energies
+    std::ifstream infile(energyFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open energy file " + energyFile);
+    double logEnergy;
+    while (infile >> logEnergy) {
+        double energy = pow(10, logEnergy) * eV; // Convert log10(E) to E
+        tabICEnergy.push_back(energy);
+    }
+    infile.close();
 
-	while (infile.good()) {
-		if (infile.peek() != '#') {
-			double a, b;
-			infile >> a >> b;
-			if (infile) {
-				tabEnergy.push_back(pow(10, a) * eV);
-				tabRate.push_back(b / Mpc);
-			}
-		}
-		infile.ignore(std::numeric_limits < std::streamsize > ::max(), '\n');
-	}
-	infile.close();
+    // Read redshifts
+    infile.open(zFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open redshift file " + zFile);
+    double z;
+    while (infile >> z) tabICZ.push_back(z);
+    infile.close();
+
+    // Read rates and directly fill the tabRate
+    infile.open(rateFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open rate file " + rateFile);
+    double rate;
+    while (infile >> rate) {
+        tabICRate.push_back(rate / Mpc); // Adjust the rate if necessary
+    }
+    infile.close();
+
+    // Now, tabEnergy, tabZ, and tabRate are filled with the data from the files.
+    // Ensure they are correctly synchronized as per your logic.
 }
+
 
 void EMInverseComptonScattering::initCumulativeRate(std::string filename) {
 	std::ifstream infile(filename.c_str());
@@ -208,17 +227,17 @@ void EMInverseComptonScattering::process(Candidate *candidate) const {
 	int id = candidate->current.getId();
 	if (abs(id) != 11)
 		return;
-
 	// scale the particle energy instead of background photons
 	double z = candidate->getRedshift();
-	double E = candidate->current.getEnergy() * (1 + z);
+	double E = candidate->current.getEnergy();
 
-	if (E < tabEnergy.front() or (E > tabEnergy.back()))
+	if ((E < tabICEnergy.front()) or (E > tabICEnergy.back()))
 		return;
 
-	// interaction rate
-	double rate = interpolate(E, tabEnergy, tabRate);
-	rate *= pow_integer<2>(1 + z) * photonField->getRedshiftScaling(z);
+	// interaction rate. 
+	// (1+z) factor is from the dl/dz modification.
+	double rate = interpolate2d(E, z, tabICEnergy, tabICZ, tabICRate)/(1+z); 
+	// rate *= pow_integer<2>(1 + z) * photonField->getRedshiftScaling(z);
 
 	// run this loop at least once to limit the step size
 	double step = candidate->getCurrentStep();
@@ -235,7 +254,7 @@ void EMInverseComptonScattering::process(Candidate *candidate) const {
 
 		// repeat with remaining step
 		step -= randDistance;
-	} while (step > 0);
+	} while (step > 0.);
 }
 
 void EMInverseComptonScattering::setInteractionTag(std::string tag) {

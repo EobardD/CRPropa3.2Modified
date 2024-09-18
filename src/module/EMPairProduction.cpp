@@ -19,11 +19,11 @@ EMPairProduction::EMPairProduction(ref_ptr<PhotonField> photonField, bool haveEl
 }
 
 void EMPairProduction::setPhotonField(ref_ptr<PhotonField> photonField) {
-	this->photonField = photonField;
-	std::string fname = photonField->getFieldName();
-	setDescription("EMPairProduction: " + fname);
-	initRate(getDataPath("EMPairProduction/rate_" + fname + ".txt"));
-	initCumulativeRate(getDataPath("EMPairProduction/cdf_" + fname + ".txt"));
+    this->photonField = photonField;
+    std::string fname = photonField->getFieldName();
+    setDescription("EMPairProduction: " + fname);
+    initCumulativeRate(getDataPath("EMPairProduction/cdf_" + fname + ".txt"));
+    initData("/Users/eobardthawne/CRPropa3Modified/build/data/EMPairProduction/"+fname); // Call initData instead of initRate and initCumulativeRate
 }
 
 void EMPairProduction::setHaveElectrons(bool haveElectrons) {
@@ -38,29 +38,48 @@ void EMPairProduction::setThinning(double thinning) {
 	this->thinning = thinning;
 }
 
-void EMPairProduction::initRate(std::string filename) {
-	std::ifstream infile(filename.c_str());
+void EMPairProduction::initData(std::string basePath) {
+    // Define filenames based on the base path and file name conventions
+    std::string energyFile = basePath + "energies.txt";
+    std::string zFile = basePath + "redshifts.txt";
+    std::string rateFile = basePath + "rates.txt";
 
-	if (!infile.good())
-		throw std::runtime_error("EMPairProduction: could not open file " + filename);
+    // clear previously loaded tables
+    tabEnergy.clear();
+    tabRate.clear();
+    tabZ.clear();
 
-	// clear previously loaded interaction rates
-	tabEnergy.clear();
-	tabRate.clear();
+    // Read energies
+    std::ifstream infile(energyFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open energy file " + energyFile);
+    double logEnergy;
+    while (infile >> logEnergy) {
+        double energy = pow(10, logEnergy) * eV; // Convert log10(E) to E
+        tabEnergy.push_back(energy);
+    }
+    infile.close();
 
-	while (infile.good()) {
-		if (infile.peek() != '#') {
-			double a, b;
-			infile >> a >> b;
-			if (infile) {
-				tabEnergy.push_back(pow(10, a) * eV);
-				tabRate.push_back(b / Mpc);
-			}
-		}
-		infile.ignore(std::numeric_limits < std::streamsize > ::max(), '\n');
-	}
-	infile.close();
+    // Read redshifts
+    infile.open(zFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open redshift file " + zFile);
+    double z;
+    while (infile >> z) tabZ.push_back(z);
+    infile.close();
+
+    // Read rates and directly fill the tabRate
+    infile.open(rateFile.c_str());
+    if (!infile.good()) throw std::runtime_error("Could not open rate file " + rateFile);
+    double rate;
+    while (infile >> rate) {
+        tabRate.push_back(rate / Mpc); // Adjust the rate if necessary
+    }
+    infile.close();
+
+    // Now, tabEnergy, tabZ, and tabRate are filled with the data from the files.
+    // Ensure they are correctly synchronized as per your logic.
 }
+
+
 
 void EMPairProduction::initCumulativeRate(std::string filename) {
 	std::ifstream infile(filename.c_str());
@@ -173,7 +192,6 @@ void EMPairProduction::performInteraction(Candidate *candidate) const {
 	// scale particle energy instead of background photon energy
 	double z = candidate->getRedshift();
 	double E = candidate->current.getEnergy() * (1 + z);
-
 	// cosmic ray photon is lost after interacting
 	candidate->setActive(false);
 
@@ -212,7 +230,7 @@ void EMPairProduction::performInteraction(Candidate *candidate) const {
 	}
 	if (random.rand() < pow(1 - f, thinning)){
 		double w = 1. / pow(1 - f, thinning);
-		candidate->addSecondary(-11, Ee / (1 + z), pos, w, interactionTag);	
+		candidate->addSecondary(-11, Ee / (1 + z), pos, w, interactionTag);
 	}
 }
 
@@ -221,17 +239,16 @@ void EMPairProduction::process(Candidate *candidate) const {
 	if (candidate->current.getId() != 22)
 		return;
 
-	// scale particle energy instead of background photon energy
 	double z = candidate->getRedshift();
-	double E = candidate->current.getEnergy() * (1 + z);
-
+	double E = candidate->current.getEnergy(); //delete the (z+1) factor
 	// check if in tabulated energy range
 	if ((E < tabEnergy.front()) or (E > tabEnergy.back()))
 		return;
 
-	// interaction rate
-	double rate = interpolate(E, tabEnergy, tabRate);
-	rate *= pow_integer<2>(1 + z) * photonField->getRedshiftScaling(z);
+	// interaction rate. 
+	// (1+z) factor is from the dl/dz modification.
+	double rate = interpolate2d(E, z, tabEnergy, tabZ, tabRate)/(1+z); 
+	// rate *= pow_integer<2>(1 + z) * photonField->getRedshiftScaling(z);
 
 	// run this loop at least once to limit the step size 
 	double step = candidate->getCurrentStep();
@@ -247,7 +264,6 @@ void EMPairProduction::process(Candidate *candidate) const {
 		}
 		step -= randDistance; 
 	} while (step > 0.);
-
 }
 
 void EMPairProduction::setInteractionTag(std::string tag) {

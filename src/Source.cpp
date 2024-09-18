@@ -1139,4 +1139,5 @@ std::string SourceMassDistribution::getDescription() {
 	return ss.str();
 }
 
+
 } // namespace crpropa

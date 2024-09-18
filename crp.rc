@@ -1,0 +1,4 @@
+export PATH=$HOME/.local/bin:$PATH
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export PYTHONPATH=$HOME/.local/lib/python3.11/site-packages:$PYTHONPATH
+export PKG_CONFIG_PATH=$HOME/.local/lib/pkgconfig:$PKG_CONFIG_PATH

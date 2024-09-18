@@ -128,11 +128,19 @@ public:
  This module detects particles when reaching x = 0 and also limits the next step size to prevent candidates from overshooting.
  */
 class Observer1D: public ObserverFeature {
-public:
-	DetectionState checkDetection(Candidate *candidate) const;
-	std::string getDescription() const;
-};
+private:
+    double detectionPosition; // Position along x-axis for detection
 
+public:
+    // Constructor to initialize the detection position
+    Observer1D(double position = 0.0);
+
+    // Check for detection
+    DetectionState checkDetection(Candidate *candidate) const;
+
+    // Return a description of the observer
+    std::string getDescription() const;
+};
 
 /**
  @class ObserverRedshiftWindow

@@ -15,6 +15,8 @@ void Redshift::process(Candidate *c) const {
 
 	// use small step approximation:  dz = H(z) / c * ds
 	double dz = hubbleRate(z) / c_light * c->getCurrentStep();
+	// modified dz
+	//double dz = hubbleRate(z)*(1+z) / c_light * c->getCurrentStep();
 
 	// prevent dz > z
 	dz = std::min(dz, z);

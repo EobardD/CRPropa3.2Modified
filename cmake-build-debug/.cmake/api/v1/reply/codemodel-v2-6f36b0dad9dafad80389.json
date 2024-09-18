@@ -1,0 +1,383 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-e983afd1a1792feee4aa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24
+					]
+				},
+				{
+					"build" : "libs/gtest",
+					"jsonFile" : "directory-libs.gtest-Debug-97c5e3484e69926ddbf0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "libs/gtest",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"build" : "libs/kiss",
+					"jsonFile" : "directory-libs.kiss-Debug-28acbd1bcefbfad83652.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libs/kiss",
+					"targetIndexes" : 
+					[
+						7,
+						25
+					]
+				},
+				{
+					"build" : "libs/HepPID",
+					"jsonFile" : "directory-libs.HepPID-Debug-ba14d8817223f9a504f2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libs/HepPID",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "libs/sophia",
+					"jsonFile" : "directory-libs.sophia-Debug-6987f456852bd6aa1f72.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libs/sophia",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "libs/healpix_base",
+					"jsonFile" : "directory-libs.healpix_base-Debug-5448476e9c48aa4b05da.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.14"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "libs/healpix_base",
+					"targetIndexes" : 
+					[
+						6
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						2,
+						3,
+						4,
+						5
+					],
+					"name" : "CRPropa",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						25
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "gtest",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "HepPID::@557b72b9a69a7b45b14f",
+					"jsonFile" : "target-HepPID-Debug-2e80ea2fa3586ba914ed.json",
+					"name" : "HepPID",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crpropa::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crpropa-Debug-db2ed928759233705159.json",
+					"name" : "crpropa",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crpropa-swig::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crpropa-swig-Debug-4ad8286f72fac7b92f24.json",
+					"name" : "crpropa-swig",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "crpropa-swig-wrapper::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-crpropa-swig-wrapper-Debug-ad4f7e8338530d700e33.json",
+					"name" : "crpropa-swig-wrapper",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gtest::@cb5fa9765450ddb54601",
+					"jsonFile" : "target-gtest-Debug-8350b6be0e8353940a08.json",
+					"name" : "gtest",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gtest_main::@cb5fa9765450ddb54601",
+					"jsonFile" : "target-gtest_main-Debug-2c77365cead4c6c5595d.json",
+					"name" : "gtest_main",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "healpix_base::@bcfecf3734c461ca6ae6",
+					"jsonFile" : "target-healpix_base-Debug-1972f92204e84c542b0f.json",
+					"name" : "healpix_base",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "kiss::@5d1a979cfd84d3e06e4e",
+					"jsonFile" : "target-kiss-Debug-4fbcda8473e094dc3a38.json",
+					"name" : "kiss",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "sophia::@23dd4bfa80b8f394605c",
+					"jsonFile" : "target-sophia-Debug-a79c19c6a0bafc37eaf1.json",
+					"name" : "sophia",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testAdiabaticCooling::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testAdiabaticCooling-Debug-5856ae9ecb83ebfee1ca.json",
+					"name" : "testAdiabaticCooling",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testAdvectionField::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testAdvectionField-Debug-2b366b85d4f91b4f7de8.json",
+					"name" : "testAdvectionField",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testBreakCondition::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testBreakCondition-Debug-4236e4f1f3c9c50bec75.json",
+					"name" : "testBreakCondition",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testCandidateSplitting::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testCandidateSplitting-Debug-772113bc7eb438175afa.json",
+					"name" : "testCandidateSplitting",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testCore::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testCore-Debug-c39bdb6288b646ad4d81.json",
+					"name" : "testCore",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testDensity::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testDensity-Debug-d9d8941fee550472bd28.json",
+					"name" : "testDensity",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testFunctionalGroups::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testFunctionalGroups-Debug-fc244d6b35cdc46603e5.json",
+					"name" : "testFunctionalGroups",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testGalacticMagneticLens::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testGalacticMagneticLens-Debug-99a5fb45a39cd5c756fb.json",
+					"name" : "testGalacticMagneticLens",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testInteraction::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testInteraction-Debug-cfa80e3bed1739e5a6c5.json",
+					"name" : "testInteraction",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testMagneticField::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testMagneticField-Debug-cf55dd8384668036b87b.json",
+					"name" : "testMagneticField",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testModuleList::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testModuleList-Debug-5027c5d7f4e5e38176d9.json",
+					"name" : "testModuleList",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testOutput::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testOutput-Debug-7cd346bbee96e51e46aa.json",
+					"name" : "testOutput",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testPropagation::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testPropagation-Debug-0fbabb25e383638f557a.json",
+					"name" : "testPropagation",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testSource::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testSource-Debug-1b58a993cf128170847a.json",
+					"name" : "testSource",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testTurbulentField::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testTurbulentField-Debug-6d467fd771780a6ffd7f.json",
+					"name" : "testTurbulentField",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "testVector3::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-testVector3-Debug-1065f1919736daefbaf2.json",
+					"name" : "testVector3",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "test_uuid::@5d1a979cfd84d3e06e4e",
+					"jsonFile" : "target-test_uuid-Debug-575422f45a62129bfa85.json",
+					"name" : "test_uuid",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/eobardthawne/CRPropa3Modified/cmake-build-debug",
+		"source" : "/Users/eobardthawne/CRPropa3Modified"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

@@ -69,7 +69,7 @@ class test1DChainWithSecondaries(unittest.TestCase):
         source.add(composition)
 
         # run simulation
-        sim.run(source, 1)
+        sim.run(source, 10000)
 
         outputFile.close()
 

@@ -1,0 +1,131 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include",
+						"/Library/Developer/CommandLineTools/usr/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "/Library/Developer/CommandLineTools/usr/bin/cc",
+				"version" : "15.0.0.15000100"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "Clang",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include/c++/v1",
+						"/Library/Developer/CommandLineTools/usr/lib/clang/15.0.0/include",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include",
+						"/Library/Developer/CommandLineTools/usr/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"c++"
+					]
+				},
+				"path" : "/Library/Developer/CommandLineTools/usr/bin/c++",
+				"version" : "15.0.0.15000100"
+			},
+			"language" : "CXX",
+			"sourceFileExtensions" : 
+			[
+				"C",
+				"M",
+				"c++",
+				"cc",
+				"cpp",
+				"cxx",
+				"mm",
+				"mpp",
+				"CPP",
+				"ixx",
+				"cppm",
+				"ccm",
+				"cxxm",
+				"c++m"
+			]
+		},
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13/include",
+						"/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13/include-fixed",
+						"/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/include"
+					],
+					"linkDirectories" : 
+					[
+						"/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13",
+						"/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc",
+						"/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current"
+					],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : 
+					[
+						"gfortran",
+						"emutls_w",
+						"gcc",
+						"quadmath"
+					]
+				},
+				"path" : "/opt/homebrew/bin/gfortran",
+				"version" : "13.2.0"
+			},
+			"language" : "Fortran",
+			"sourceFileExtensions" : 
+			[
+				"f",
+				"F",
+				"fpp",
+				"FPP",
+				"f77",
+				"F77",
+				"f90",
+				"F90",
+				"for",
+				"For",
+				"FOR",
+				"f95",
+				"F95",
+				"f03",
+				"F03",
+				"f08",
+				"F08"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

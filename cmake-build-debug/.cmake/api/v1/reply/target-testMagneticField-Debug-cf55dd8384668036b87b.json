@@ -1,0 +1,341 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "testMagneticField"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"add_definitions",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 591,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 592,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 421,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 230,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 278,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 264,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 536,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 108,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 348,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -DGTEST_USE_OWN_TR1_TUPLE=1  -Wextra -std=gnu++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk -fcolor-diagnostics   -arch x86_64"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 4,
+					"define" : "CRPROPA_HAVE_FFTW3F"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "CRPROPA_HAVE_HDF5"
+				},
+				{
+					"backtrace" : 6,
+					"define" : "CRPROPA_HAVE_ZLIB"
+				},
+				{
+					"backtrace" : 7,
+					"define" : "CRPROPA_INSTALL_PREFIX=\"/usr/local\""
+				},
+				{
+					"backtrace" : 2,
+					"define" : "H5_BUILT_AS_DYNAMIC_LIB"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 8,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/gtest/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/kiss/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/HepPID/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/sophia"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/eigen3"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/healpix_base/include"
+				},
+				{
+					"backtrace" : 9,
+					"path" : "/Users/eobardthawne/CRPropa3Modified/libs/zstream-cpp"
+				},
+				{
+					"backtrace" : 9,
+					"isSystem" : true,
+					"path" : "/opt/homebrew/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					1
+				],
+				"standard" : "11"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "crpropa::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gtest::@cb5fa9765450ddb54601"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "gtest_main::@cb5fa9765450ddb54601"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "kiss::@5d1a979cfd84d3e06e4e"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "HepPID::@557b72b9a69a7b45b14f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "sophia::@23dd4bfa80b8f394605c"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "healpix_base::@bcfecf3734c461ca6ae6"
+		}
+	],
+	"id" : "testMagneticField::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-DGTEST_USE_OWN_TR1_TUPLE=1  -Wextra",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc/aarch64-apple-darwin22/13",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current/gcc",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/current",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/Users/eobardthawne/CRPropa3Modified/cmake-build-debug -Wl,-rpath,/opt/homebrew/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libcrpropa.dylib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libs/gtest/libgtest.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libs/gtest/libgtest_main.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "libs/kiss/libkiss.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "libs/HepPID/libHepPID.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "libs/sophia/libsophia.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lgfortran",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "libs/healpix_base/libhealpix_base.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/opt/homebrew/lib/libfftw3f.dylib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/Library/Developer/CommandLineTools/SDKs/MacOSX14.2.sdk/usr/lib/libz.tbd",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "/opt/homebrew/lib/libhdf5.310.3.0.dylib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "libs/gtest/libgtest.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgfortran",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lemutls_w",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lquadmath",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "testMagneticField",
+	"nameOnDisk" : "testMagneticField",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "test/testMagneticField.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
